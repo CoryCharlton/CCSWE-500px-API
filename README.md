@@ -1,4 +1,4 @@
-# CCSWE-500px-API
+# CCSWE 500px API
 
 A C# implementation of the 500px API using OAuth version 1.0.
 
