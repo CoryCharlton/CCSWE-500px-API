@@ -66,8 +66,8 @@ Usage is straightforward. Windows Forms example:
                         }
                     }
 
-                    var accessToken = await _service.AccessToken(_requestToken);
-                    _service.Token = accessToken;
+                    var accessToken = await _service.GetAccessToken(_requestToken);
+                    _service.AccessToken = accessToken;
                     // The GetCurrentUser() method is an authenticated request and retrieves the details of the authenticated user
                     var response3 = await _service.GetCurrentUser();
                 }
@@ -78,8 +78,8 @@ Usage is straightforward. Windows Forms example:
 
             private async void button1_Click(object sender, EventArgs e)
             {
-                _requestToken = await _service.RequestToken();
-                webBrowser1.Navigate(_service.AuthorizeToken(_requestToken));
+                _requestToken = await _service.GetRequestToken();
+                webBrowser1.Navigate(_service.GetAuthorizeRequestTokenUrl(_requestToken));
             }
         }
     }
