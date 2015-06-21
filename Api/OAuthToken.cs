@@ -3,12 +3,12 @@
     public class OAuthToken
     {
         #region Constructor
-        public OAuthToken() : this(string.Empty, string.Empty, string.Empty)
+        public OAuthToken()
         {
             
         }
 
-        public OAuthToken(string token, string secret) : this(token, secret, string.Empty)
+        public OAuthToken(string token, string secret) : this(token, secret, null)
         {
             
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CCSWE.FiveHundredPx.Collections;
 using CCSWE.FiveHundredPx.Models;
 
 namespace CCSWE.FiveHundredPx.Interfaces
@@ -16,7 +17,7 @@ namespace CCSWE.FiveHundredPx.Interfaces
         string FocalLength { get; set; }
         double HighestRating { get; set; }
         long Id { get; set; }
-        List<Image> Images { get; set; }
+        ImageCollection Images { get; set; }
         string Iso { get; set; }
         double? Latitude { get; set; }
         string Lens { get; set; }

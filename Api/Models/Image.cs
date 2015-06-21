@@ -5,6 +5,7 @@ namespace CCSWE.FiveHundredPx.Models
     [DataContract]
     public class Image
     {
+        #region Public Properties
         [DataMember(Name = "format")]
         public string Format { get; set; }
 
@@ -16,5 +17,6 @@ namespace CCSWE.FiveHundredPx.Models
 
         [DataMember(Name = "url")]
         public string Url { get; set; }
+	    #endregion
     }
 }

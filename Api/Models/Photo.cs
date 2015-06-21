@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using CCSWE.FiveHundredPx.Collections;
 using CCSWE.FiveHundredPx.Interfaces;
 
 namespace CCSWE.FiveHundredPx.Models
@@ -39,7 +40,7 @@ namespace CCSWE.FiveHundredPx.Models
         public long Id { get; set; }
 
         [DataMember(Name = "images")]
-        public List<Image> Images { get; set; }
+        public ImageCollection Images { get; set; }
 
         [DataMember(Name = "iso")]
         public string Iso { get; set; }

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Categories.cs" />
     <Compile Include="FiveHundredPxService.cs" />
+    <Compile Include="Collections\ImageCollection.cs" />
     <Compile Include="Models\UserDetails.cs" />
     <Compile Include="FilterMode.cs" />
     <Compile Include="Contracts\AddFriendResponse.cs" />

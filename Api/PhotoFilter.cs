@@ -45,6 +45,7 @@ namespace CCSWE.FiveHundredPx
         #endregion
 
         #region Private Methods
+        //TODO: Move to ImageHelper
         private static List<int> GetAllSizes()
         {
             return new List<int>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using CCSWE.FiveHundredPx.Interfaces;
 
@@ -11,6 +12,8 @@ namespace CCSWE.FiveHundredPx.Models
         [DataMember(Name = "about")]
         public string About { get; set; }
 
+        //public Dictionary<string, string>
+            
         [DataMember(Name = "domain")]
         public string Domain { get; set; }
 

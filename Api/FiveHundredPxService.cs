@@ -15,11 +15,20 @@ namespace CCSWE.FiveHundredPx
 	public class FiveHundredPxService
 	{
 		#region Constructor
-		public FiveHundredPxService(string consumerKey, string consumerSecret, string callbackUrl)
+        //public FiveHundredPxService(string consumerKey, string consumerSecret)
+        //{
+        //    _callbackUrl = callbackUrl;
+        //    _consumerKey = consumerKey;
+        //    _consumerSecret = consumerSecret;
+        //}
+        
+        public FiveHundredPxService(string consumerKey, string consumerSecret, string callbackUrl)
 		{
 			_callbackUrl = callbackUrl;
 			_consumerKey = consumerKey;
 			_consumerSecret = consumerSecret;
+
+            AccessToken = new OAuthToken();
 		}
 
 		public FiveHundredPxService(string consumerKey, string consumerSecret, string callbackUrl, OAuthToken token)
@@ -27,7 +36,8 @@ namespace CCSWE.FiveHundredPx
 			_callbackUrl = callbackUrl;
 			_consumerKey = consumerKey;
 			_consumerSecret = consumerSecret;
-			_token = token;
+			
+            AccessToken = token;
 		}
 		#endregion
 
@@ -45,15 +55,19 @@ namespace CCSWE.FiveHundredPx
 		private readonly string _consumerKey;
 		private readonly string _consumerSecret;
 		private readonly Random _random = new Random();
-		private OAuthToken _token = new OAuthToken();
 		#endregion
 
 		#region Public Properties
-		public OAuthToken Token
-		{
-			get {  return _token;}
-			set { _token = value; }
-		}
+        public OAuthToken AccessToken { get; set; }
+
+        public bool IsAuthenticated
+	    {
+	        get
+	        {
+                return (AccessToken != null && !string.IsNullOrWhiteSpace(AccessToken.Secret) && !string.IsNullOrWhiteSpace(AccessToken.Token));
+	        }
+	        
+	    }
 		#endregion
 
 		#region Private Methods
@@ -62,7 +76,7 @@ namespace CCSWE.FiveHundredPx
 			T returnValue;
 			string rootUrl, parameters;
 
-			var signature = GenerateSignature(new Uri(url), _token, "DELETE", out rootUrl, out parameters);
+			var signature = GenerateSignature(new Uri(url), AccessToken, "DELETE", out rootUrl, out parameters);
 
 			using (var client = new HttpClient())
 			{
@@ -186,7 +200,7 @@ namespace CCSWE.FiveHundredPx
 			Debug.WriteLine("Original url: " + url);
 #endif
 
-			var signature = GenerateSignature(new Uri(url), _token, "GET", out rootUrl, out parameters);
+			var signature = GenerateSignature(new Uri(url), AccessToken, "GET", out rootUrl, out parameters);
 
 			using (var client = new HttpClient())
 			{
@@ -261,7 +275,7 @@ namespace CCSWE.FiveHundredPx
 			T returnValue;
 			string rootUrl, parameters;
 
-			var signature = GenerateSignature(new Uri(url), _token, "POST", out rootUrl, out parameters);
+			var signature = GenerateSignature(new Uri(url), AccessToken, "POST", out rootUrl, out parameters);
 
 			using (var client = new HttpClient())
 			{
@@ -337,7 +351,7 @@ namespace CCSWE.FiveHundredPx
 
 		//TODO: Make the auth calls static...
 
-		public async Task<OAuthToken> AccessToken(OAuthToken requestToken)
+		public async Task<OAuthToken> GetAccessToken(OAuthToken requestToken)
 		{
 			var returnValue = new OAuthToken();
 			string rootUrl, parameters;
@@ -373,14 +387,15 @@ namespace CCSWE.FiveHundredPx
 			return returnValue;	            
 		}
 
-		public string AuthorizeToken(OAuthToken requestToken)
+		public string GetAuthorizeRequestTokenUrl(OAuthToken requestToken)
 		{
 			string rootUrl, parameters;
 
 			var signature = GenerateSignature(new Uri(AuthorizeUrl), requestToken, "POST", out rootUrl, out parameters);
 			return rootUrl + "?" + parameters + "&" + OAuthParameter.Signature + "=" + UrlEncode(signature);
 		}
-		public async Task<OAuthToken> RequestToken()
+
+		public async Task<OAuthToken> GetRequestToken()
 		{
 			var returnValue = new OAuthToken();
 			string rootUrl, parameters;
