@@ -16,7 +16,7 @@ namespace CCSWE.FiveHundredPx.Interfaces
         string Locale { get; set; }
         long PhotosCount { get; set; }
         DateTime RegistrationDate { get; set; }
-        //TODO: This should not be nullable according to the spec :shrug:
+        //TODO: IUserDetails - This should not be nullable according to the spec :shrug:
         int? Sex { get; set; }
         bool ShowNude { get; set; }
         string State { get; set; }

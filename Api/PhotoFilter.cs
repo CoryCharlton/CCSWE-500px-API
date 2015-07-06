@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CCSWE.FiveHundredPx.Collections;
 using CCSWE.FiveHundredPx.Interfaces;
 
 namespace CCSWE.FiveHundredPx
@@ -9,13 +10,13 @@ namespace CCSWE.FiveHundredPx
         public PhotoFilter()
         {
             Feature = Feature.FreshToday;
-            Sizes = GetAllSizes();
+            Sizes = ImageCollection.GetAllSizeIds();
         }
 
         public PhotoFilter(long userId)
         {
             Feature = Feature.User;
-            Sizes = GetAllSizes();
+            Sizes = ImageCollection.GetAllSizeIds();
             UserId = userId;
         }
 
@@ -23,7 +24,7 @@ namespace CCSWE.FiveHundredPx
         {
             Categories = exclude;
             Feature = feature;
-            Sizes = GetAllSizes();
+            Sizes = ImageCollection.GetAllSizeIds();
         }
         #endregion
         
@@ -41,33 +42,6 @@ namespace CCSWE.FiveHundredPx
         public override string ToString()
         {
             return UrlBuilder.GetPhotos(this);
-        }
-        #endregion
-
-        #region Private Methods
-        //TODO: Move to ImageHelper
-        private static List<int> GetAllSizes()
-        {
-            return new List<int>
-            {
-                //Cropped
-                1,
-                2,
-                3,
-                100,
-                200,
-                440,
-                600,
-                //Uncropped
-                4,
-                5,
-                20,
-                21,
-                30,
-                1080,
-                1600,
-                2048,
-            };
         }
         #endregion
     }

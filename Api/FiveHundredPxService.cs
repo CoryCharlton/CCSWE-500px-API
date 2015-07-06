@@ -254,20 +254,19 @@ namespace CCSWE.FiveHundredPx
 
 		private string NormalizeRequestParameters(IList<QueryParameter> parameters)
 		{
-			var sb = new StringBuilder();
+			var stringBuilder = new StringBuilder();
 			for (var i = 0; i < parameters.Count; i++)
 			{
-				var p = parameters[i];
-				//TODO: This is a ghetto hack...
-				sb.AppendFormat("{0}={1}", UrlEncode(p.Name), UrlEncode(p.Value));
+				var parameter = parameters[i];
+				stringBuilder.AppendFormat("{0}={1}", UrlEncode(parameter.Name), UrlEncode(parameter.Value));
 
 				if (i < parameters.Count - 1)
 				{
-					sb.Append("&");
+					stringBuilder.Append("&");
 				}
 			}
 
-			return sb.ToString();
+			return stringBuilder.ToString();
 		}
 
 		private async Task<T> Post<T>(string url) where T : Response, new()
@@ -288,10 +287,11 @@ namespace CCSWE.FiveHundredPx
 
 		private static string UrlEncode(string value)
 		{
-			//TODO: Should I use System.Uri.EscapeDataString instead?
-			return WebUtility.UrlEncode(value).Replace("+", "%20");
+		    //TODO: FiveHundredPxService - Should I use System.Uri.EscapeDataString instead?
+		    var urlEncoded = WebUtility.UrlEncode(value);
+		    return (urlEncoded != null) ? urlEncoded.Replace("+", "%20") : null;
 		}
-		#endregion
+	    #endregion
 
 		#region Public Methods
 		public async Task<AddFriendResponse> AddFriend(long userId)
@@ -349,7 +349,7 @@ namespace CCSWE.FiveHundredPx
 			return await Delete<RemoveFriendResponse>(string.Format("https://api.500px.com/v1/users/{0}/friends", userId));
 		}
 
-		//TODO: Make the auth calls static...
+        //TODO: FiveHundredPxService - Make the auth calls static...
 
 		public async Task<OAuthToken> GetAccessToken(OAuthToken requestToken)
 		{

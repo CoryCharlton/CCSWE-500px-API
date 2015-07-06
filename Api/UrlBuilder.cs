@@ -55,7 +55,7 @@ namespace CCSWE.FiveHundredPx
 
         public static string GetPhotos(IPhotoFilter filter)
         {
-            //TODO: Add some validation...
+            //TODO: UrlBuilder.GetPhotos() - Add some validation...
             var url = "https://api.500px.com/v1/photos";
 
             url = AddParameter(url, "feature", Converter.ConvertFeatureToQueryParameterValue(filter.Feature));
