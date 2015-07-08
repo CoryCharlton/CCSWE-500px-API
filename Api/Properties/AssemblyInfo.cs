@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CCSWE 500px API")]
+[assembly: AssemblyTitle("CCSWE.500px.Api")]
 [assembly: AssemblyDescription("A C# implementation of the 500px API using OAuth version 1.0.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CCSWE")]
-[assembly: AssemblyProduct("CCSWE 500px API")]
+[assembly: AssemblyProduct("CCSWE.500px.Api")]
 [assembly: AssemblyCopyright("Copyright ©  2015 Cory Charlton")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
