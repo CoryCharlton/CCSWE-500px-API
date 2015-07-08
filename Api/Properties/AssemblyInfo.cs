@@ -5,9 +5,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("CCSWE 500px API")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A C# implementation of the 500px API using OAuth version 1.0.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("CCSWE")]
 [assembly: AssemblyProduct("CCSWE 500px API")]
 [assembly: AssemblyCopyright("Copyright ©  2015 Cory Charlton")]
 [assembly: AssemblyTrademark("")]

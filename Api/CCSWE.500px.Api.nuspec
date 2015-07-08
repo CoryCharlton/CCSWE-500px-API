@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>machx0r</authors>
+    <owners>macxh0r</owners>
+    <licenseUrl>https://github.com/machx0r/CCSWE-500px-API/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/machx0r/CCSWE-500px-API</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial push to nuget.</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags></tags>
+  </metadata>
+</package>
