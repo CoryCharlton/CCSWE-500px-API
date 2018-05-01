@@ -1,5 +1,7 @@
 # CCSWE 500px API
 
+## Update: Since 500px has decided to [shutdown their API](https://support.500px.com/hc/en-us/articles/360002435653-API-) I'm going to archive this repository.
+
 A C# implementation of the 500px API using OAuth version 1.0.
 
 If you find this code to be useful please consider [donating](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H79P5CZBN85YG) to support my efforts.
